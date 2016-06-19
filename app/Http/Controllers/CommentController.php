@@ -16,4 +16,15 @@ class CommentController extends Controller
     public function index( Request $request ) {
     	return view('comments.index');
     }
+
+    /**
+    * Create a new comment
+    * @param Request $request
+    * @return Response
+    */
+    public function store( Request $request ) {
+    	$this->validate( @request, [
+    		'comment' => 'required|max:200',
+    	]);
+    }
 }
