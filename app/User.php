@@ -23,4 +23,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // User:1 --- M:Comment
+    // 1 user can have many comments
+    public function comments() {
+        return $this->hasMany(Comment::class); // this (User) has many instances of the Comment
+    }
 }
