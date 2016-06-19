@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/comments',              'CommentController@index');
+Route::post('/comments',             'CommentController@store');
+Route::delete('/comments/{comment}', 'CommentController@destroy');
