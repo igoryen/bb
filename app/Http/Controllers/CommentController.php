@@ -14,7 +14,10 @@ class CommentController extends Controller
     }
 
     public function index( Request $request ) {
-    	return view('comments.index');
+    	$comments = $request->user()->comments()->get();
+    	return view('comments.index', [
+    		'comments' => $comments,
+    	]);
     }
 
     /**
@@ -26,5 +29,11 @@ class CommentController extends Controller
     	$this->validate( @request, [
     		'comment' => 'required|max:200',
     	]);
+
+    	$request->user()->comments()->create([
+    		'comment' => $request->comment,
+    	]);
+
+    	return redirect('/comments');
     }
 }
