@@ -9,4 +9,7 @@ use App\Http\Requests;
 class CommentController extends Controller
 {
     //
+    public function __construst(){
+    	$this->middleware('auth'); // 'auth' is middleware
+    }
 }
